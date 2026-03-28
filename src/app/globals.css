@@ -2,56 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     color: #fff;
     background-color: #000;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(8, 233, 94, 0.25);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #08E95E;
+    border-radius: 2px;
   }
 }
 
-@layer components{
-  .menuLink {
-    @apply cursor-pointer hover:text-[#c5c5c5];
+@layer components {
+  /* Nav links */
+  .nav-link {
+    @apply relative text-gray-300 hover:text-white transition-colors duration-200 text-[15px] font-medium;
   }
-  .tags{
-    background-color: #57757b;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
-    padding: 3px 10px;
-    display: inline-block;
-    color: white;
-    font-size: 12px;
-
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-[2px] bg-accent transition-all duration-300;
   }
-  .tags:last-child{
-    margin: 0;
-
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
   }
-  .tags:nth-child(2){
-    background-color: #cfe1d9;
+  .nav-link.active {
+    @apply text-accent;
+  }
+
+  /* Section wrapper */
+  .section {
+    @apply container py-24 md:py-32;
+  }
+
+  /* Tech tags */
+  .tag {
+    @apply inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full
+           bg-accent-dim text-accent border border-accent/20
+           transition-colors duration-150;
+  }
+
+  /* Accent button */
+  .btn-accent {
+    @apply inline-flex items-center gap-2 bg-accent text-black font-bold
+           px-6 py-3 rounded-full text-sm
+           hover:bg-accent-dark hover:shadow-glow
+           active:scale-95 transition-all duration-200;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 border border-accent/40 text-accent
+           px-6 py-3 rounded-full text-sm font-semibold
+           hover:bg-accent-dim hover:border-accent
+           active:scale-95 transition-all duration-200;
+  }
+
+  /* Input/textarea */
+  .form-input {
+    @apply w-full bg-card border border-border rounded-xl px-4 py-3 text-white
+           placeholder-gray-600 text-sm
+           focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30
+           transition-all duration-200;
+  }
+
+  /* Section heading underline */
+  .section-heading {
+    @apply text-3xl md:text-4xl font-black tracking-tight;
+  }
+  .section-heading span {
+    @apply text-accent;
+  }
+
+  /* Card base */
+  .project-card {
+    @apply bg-card border border-border rounded-2xl overflow-hidden
+           transition-all duration-300
+           hover:border-accent/40 hover:shadow-glow hover:-translate-y-1;
+  }
 }
-tags:nth-child(3){
-  background-color: #a55eea;
-}
-tags:nth-child(2){
-  background-color: #275c30;}
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
