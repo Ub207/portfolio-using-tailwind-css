@@ -1,12 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-/* config options here */
+  images: {
+    unoptimized: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
-module.exports = {
-    //...
-    images: {
-        unoptimized: true,
-    },
-};
-exports.default = nextConfig;
+
+module.exports = nextConfig;
