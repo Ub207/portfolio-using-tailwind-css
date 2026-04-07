@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(vercel --version)",
+      "Bash(cd:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}
